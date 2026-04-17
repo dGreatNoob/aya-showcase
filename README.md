@@ -125,7 +125,35 @@ The owner's dashboard (Next.js + Tailwind + DaisyUI) is used daily by business o
 
 ## Screenshots
 
-> Screenshots to be added. Aya serves real customers, so screenshots will be prepared from a sanitized staging tenant to avoid exposing customer data.
+> Captured from a sanitized test workspace to avoid exposing customer data.
+
+### Behavior & Training — agent personality + system prompt + live sandbox
+
+![AI Configuration](screenshots/03-ai-configuration.png)
+
+Core personality toggle, full system prompt editor, and a live sandbox on the right. Corrections typed into the sandbox deploy to the real agent the moment they're saved — no separate deploy step, no waiting, no retraining.
+
+### Knowledge Base — RAG with operator-visible retrieval
+
+![Knowledge Base](screenshots/04-knowledge-base.png)
+
+Operators upload FAQs, pricing, services, policies. Content is chunked and embedded with `baai/bge-m3`. The RAG Preview panel on the right lets the operator ask any question and see the exact chunks retrieved — the agent's knowledge is never a black box.
+
+### Bookings — real calendars, real slots, no hallucinated appointments
+
+![Bookings](screenshots/09-bookings.png)
+
+Per-provider view with realtime slot updates. Behind the scenes: HMAC-signed slot tokens + a partial unique index on `(provider_id, starts_at)` make double-booking impossible at the database layer, and the agent can't fabricate times because it only sees slots injected from Postgres into the system prompt pre-inference.
+
+### Public chat page — what customers see
+
+![Public chat](screenshots/11-public-chat.png)
+
+The `/talk/[slug]` page is what customers reach from a link, QR code, or FB post — no widget embed required. Each business gets a branded page with its own greeting, suggested actions, after-hours awareness, and multi-language support (English, Filipino, Taglish, Cebuano).
+
+### Login
+
+![Login page](screenshots/01-login.png)
 
 ---
 
